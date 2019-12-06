@@ -19,6 +19,7 @@ const styles = StyleSheet.create({
     },
     buttonCriarConta: {
         justifyContent: 'center',
+        marginTop: 20
     },
     button: {
         margin: 40,
@@ -26,7 +27,15 @@ const styles = StyleSheet.create({
         backgroundColor: '#970B97'
     },
     textButton: {
-        textAlign: 'center'
+        textAlign: 'center',
+        color: "white"
+    },
+    btnFacebook: {
+        justifyContent: 'center',
+        marginTop: 0,
+        marginLeft: 40,
+        marginRight: 40,
+        backgroundColor: '#3b5998'
     }
 });
 
