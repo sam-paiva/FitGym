@@ -1,31 +1,70 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { Container, Input, Item, Button, Text } from 'native-base';
-import { Image } from 'react-native';
+import { Image, ToastAndroid } from 'react-native';
 
-import Icon from 'react-native-vector-icons/AntDesign';
+import * as actions from '../../actions/loginActions';
 import styles from './styles';
 
-const CreateAccount = () => {
+const CreateAccount = (props) => {
+
+    const [name, setName] = useState('');
+    const [lasName, setLastName] = useState('');
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [confirmPassword, setConfirmPassword] = useState('');
+
+    const successCreateAccount = useSelector(state => state.login.successCreateAccount);
+
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+
+    })
+
+    function saveAccount() {
+
+        if (email.length === 0 || name.length === 0 || password.length === 0 || confirmPassword.length === 0) {
+            ToastAndroid.show('Por favor preencha todos os campos', 5000);
+            return;
+        }
+
+        let User = {
+            userId: email,
+            password: password,
+            firstName: name,
+            lastName: lasName,
+            email: email
+        }
+
+        dispatch(actions.createAccountAction(User));
+    }
+
+    if (successCreateAccount) {
+        props.navigation.navigate('Login');
+        ToastAndroid.show('Sucesso ao criar sua conta', 4000);
+    }
+
     return (
         <>
             <Container style={styles.container}>
-                <Image style={styles.image} source={require('../../resources/gym-icon.png')} />
+                <Text>Registre-se</Text>
                 <Item style={styles.item}>
-                    <Input style={styles.input} placeholder="nome completo" />
+                    <Input onChangeText={((e) => setName(e))} style={styles.input} placeholder="Nome" />
                 </Item>
                 <Item style={styles.item}>
-                    <Input style={styles.input} placeholder="email" />
+                    <Input onChangeText={((e) => setLastName(e))} style={styles.input} placeholder="Sobrenome" />
                 </Item>
                 <Item style={styles.item}>
-                    <Input style={styles.input} placeholder="idade"></Input>
+                    <Input onChangeText={((e) => setEmail(e))} style={styles.input} placeholder="E-mail" />
                 </Item>
                 <Item style={styles.item}>
-                    <Input secureTextEntry={true} style={styles.input} placeholder="senha"></Input>
+                    <Input onChangeText={((e) => setPassword(e))} secureTextEntry={true} style={styles.input} placeholder="Senha"></Input>
                 </Item>
                 <Item style={styles.item}>
-                    <Input secureTextEntry={true} style={styles.input} placeholder="confirmar senha"></Input>
+                    <Input onChangeText={((e) => setConfirmPassword(e))} secureTextEntry={true} style={styles.input} placeholder="Confirmar Senha"></Input>
                 </Item>
-                <Button style={styles.button} rounded>
+                <Button onPress={() => saveAccount()} style={styles.button} rounded>
                     <Text style={styles.textButton}>Criar</Text>
                 </Button>
             </Container>

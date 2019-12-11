@@ -15,16 +15,27 @@ const styles = StyleSheet.create({
         alignSelf: 'center'
     },
     item: {
-        marginTop: 30
+        marginTop: 30,
+        borderColor: 'white'
+    },
+    groupButtonItem: {
+        marginTop: 20,
+        borderBottomColor: 'black'
     },
     buttonCriarConta: {
-        justifyContent: 'center',
-        marginTop: 20
+        justifyContent: 'flex-start',
+        marginTop: 20,
+        alignContent: 'flex-start'
+    },
+    btnForgotPwd: {
+        justifyContent: 'flex-end',
+        marginLeft: 180,
+        marginTop: 20,
     },
     button: {
         margin: 40,
         justifyContent: 'center',
-        backgroundColor: '#970B97'
+        backgroundColor: 'black'
     },
     textButton: {
         textAlign: 'center',
@@ -33,10 +44,30 @@ const styles = StyleSheet.create({
     btnFacebook: {
         justifyContent: 'center',
         marginTop: 0,
-        marginLeft: 40,
-        marginRight: 40,
+        marginLeft: 60,
+        marginRight: 60,
         backgroundColor: '#3b5998'
-    }
+    },
+    modalContent: {
+        height: 70,
+        width: 250,
+        justifyContent: 'center',
+        backgroundColor: '#1d1d1d',
+        borderBottomColor: 'black'
+    },
+    modal: {
+        justifyContent: 'center',
+        alignItems: 'center'
+    },
+    textModal: {
+        textAlign: 'center',
+        color: "white",
+        marginLeft: 10
+    },
+    textGroupButton: {
+        fontSize: 11,
+        color: 'white',
+    },
 });
 
 
